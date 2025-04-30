@@ -6,16 +6,24 @@ import sys
 # Set up logger
 logger.remove()  # Remove default handler
 logger.add(sys.stderr, level="INFO")  # Log to stderr
-logger.add("logs/data_validation.log", level="DEBUG", rotation="500 KB", backtrace=True, diagnose=True)  # Optional file logging
+logger.add(
+    "logs/data_validation.log",
+    level="DEBUG",
+    rotation="500 KB",
+    backtrace=True,
+    diagnose=True,
+)  # Optional file logging
 
 # Define the schema for validation
-schema = DataFrameSchema({
-    "sepal length (cm)": Column(float),
-    "sepal width (cm)": Column(float),
-    "petal length (cm)": Column(float),
-    "petal width (cm)": Column(float),
-    "target": Column(int),
-})
+schema = DataFrameSchema(
+    {
+        "sepal length (cm)": Column(float),
+        "sepal width (cm)": Column(float),
+        "petal length (cm)": Column(float),
+        "petal width (cm)": Column(float),
+        "target": Column(int),
+    }
+)
 
 try:
     # Log that the data file is being loaded

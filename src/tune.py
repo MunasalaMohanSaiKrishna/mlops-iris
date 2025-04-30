@@ -9,15 +9,22 @@ import sys
 # Set up logger
 logger.remove()  # Remove default handler
 logger.add(sys.stderr, level="INFO")  # Log to stderr
-logger.add("logs/tune.log", level="DEBUG", rotation="500 KB", backtrace=True, diagnose=True)  # Optional file logging
+logger.add(
+    "logs/tune.log", level="DEBUG", rotation="500 KB", backtrace=True, diagnose=True
+)  # Optional file logging
+
 
 def objective(trial):
     try:
-        df = pd.read_csv("data/iris.csv")  # Adjusted path to be relative to project root
+        df = pd.read_csv(
+            "data/iris.csv"
+        )  # Adjusted path to be relative to project root
         X = df.drop(columns=["target"])
         y = df["target"]
 
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        X_train, X_test, y_train, y_test = train_test_split(
+            X, y, test_size=0.2, random_state=42
+        )
 
         params = {
             "n_estimators": trial.suggest_int("n_estimators", 10, 100),
@@ -32,6 +39,7 @@ def objective(trial):
     except Exception as e:
         logger.exception("An error occurred during the tuning process", e)
         raise
+
 
 if __name__ == "__main__":
     try:

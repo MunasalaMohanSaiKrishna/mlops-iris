@@ -10,7 +10,13 @@ import sys
 # Set up logger
 logger.remove()  # Remove default handler
 logger.add(sys.stderr, level="INFO")  # Log to stderr
-logger.add("logs/model_training.log", level="DEBUG", rotation="500 KB", backtrace=True, diagnose=True)  # Optional file logging
+logger.add(
+    "logs/model_training.log",
+    level="DEBUG",
+    rotation="500 KB",
+    backtrace=True,
+    diagnose=True,
+)  # Optional file logging
 
 # Set MLflow experiment
 mlflow.set_experiment("mlops-demo")
@@ -24,7 +30,9 @@ try:
     # Prepare data
     X = df.drop(columns=["target"])
     y = df["target"]
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42
+    )
     logger.info("Data split into training and testing sets")
 
     # Initialize and train model

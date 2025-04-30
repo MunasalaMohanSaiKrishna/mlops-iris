@@ -23,16 +23,24 @@ petal_width = st.slider("Petal Width (cm)", min_value=0.1, max_value=3.0, value=
 features = [sepal_length, sepal_width, petal_length, petal_width]
 
 # Create a DataFrame with proper column names
-input_data = pd.DataFrame([features], columns=["sepal length (cm)", "sepal width (cm)", "petal length (cm)", "petal width (cm)"])
+input_data = pd.DataFrame(
+    [features],
+    columns=[
+        "sepal length (cm)",
+        "sepal width (cm)",
+        "petal length (cm)",
+        "petal width (cm)",
+    ],
+)
 
 # Predict button
 if st.button("Predict"):
     # Make prediction
     pred = model.predict(input_data)
-    
+
     # Map the prediction to the class name
     predicted_label = int(pred[0])
     predicted_class = target_names[predicted_label]
-    
+
     # Display the result
     st.write(f"Predicted Iris Species: **{predicted_class}**")

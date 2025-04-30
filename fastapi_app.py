@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
+
 # import numpy as np
 import logging
 
@@ -13,9 +14,11 @@ model = joblib.load("models/best_model.pkl")
 # Mapping of class labels to target names
 target_names = {0: "setosa", 1: "versicolor", 2: "virginica"}
 
+
 # Define input data format
 class Features(BaseModel):
     features: list[float]
+
 
 # Define the prediction endpoint
 @app.post("/predict")
@@ -23,7 +26,7 @@ def predict(f: Features):
     try:
         # Make prediction
         pred = model.predict([f.features])
-        
+
         # Map the prediction to the class name
         predicted_label = int(pred[0])
         predicted_class = target_names[predicted_label]
