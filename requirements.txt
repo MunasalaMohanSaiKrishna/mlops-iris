@@ -1,0 +1,20 @@
+mlflow
+optuna
+scikit-learn
+pandas
+numpy
+pandera
+pytest
+flake8
+black
+fastapi
+uvicorn
+joblib
+evidently
+loguru
+streamlit
+ruff
+
+# Optional GPU support (commented)
+# torch
+# tensorflow

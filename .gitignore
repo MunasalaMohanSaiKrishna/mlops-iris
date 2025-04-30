@@ -1,0 +1,7 @@
+./logs
+./mlruns
+./test.py
+.venv
+test.py
+__pycache__/
+src/logs/
