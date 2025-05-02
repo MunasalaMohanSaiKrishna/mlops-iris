@@ -4,7 +4,7 @@ import pandas as pd
 # import numpy as np
 
 # Load the pre-trained model
-model = joblib.load("models/best_model.pkl")
+model = joblib.load("./models/best_model.pkl")
 
 # Mapping of class labels to target names
 target_names = {0: "setosa", 1: "versicolor", 2: "virginica"}
