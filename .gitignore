@@ -1,5 +1,6 @@
 ./logs
-./mlruns
+logs/model_training.log
+mlruns
 ./test.py
 .venv
 test.py
